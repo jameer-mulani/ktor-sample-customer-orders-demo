@@ -19,3 +19,18 @@ class ApplicationTest {
         }
     }
 }
+
+class OrderRouteTests {
+
+    @Test
+    fun testGetOrder() = testApplication {
+        val response = client.get("/orders/2023-04-17-1")
+//        assertEquals(
+//            """{"number":"2023-04-17-1","orderItems":[{"name":"Cheese","count":3,"price":20.0},{"name":"Milk","count":2,"price":40.0},{"name":"Bread","count":4,"price":10.0}]}""",
+//            response.bodyAsText()
+//        )
+
+        assertEquals(HttpStatusCode.OK, response.status)
+    }
+
+}

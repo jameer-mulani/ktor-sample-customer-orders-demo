@@ -21,7 +21,7 @@ fun Route.getOrderRoute(){
         val id = call.parameters["id"] ?: return@get call.respondText("Missing order number", status = HttpStatusCode.BadRequest)
         val order = ordersStroage.find { it.number == id } ?: return@get call.respondText("No order found", status = HttpStatusCode.NotFound)
 
-        call.respond(order)
+        call.respond(status = HttpStatusCode.OK, order)
     }
 }
 
